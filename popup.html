@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { width: 320px; padding: 15px; font-family: 'Segoe UI', Tahoma, sans-serif; background: #fff; margin: 0; }
+    .logo-container { text-align: center; margin-bottom: 10px; font-size: 20px; font-weight: 800; }
+    .omni { color: #1e88e5; }
+    .timer { color: #ff9800; }
+    
+    #live-session { text-align: center; margin-bottom: 10px; padding: 12px; background: #fff9f0; border-radius: 8px; border: 1px solid #ffe0b2; }
+    #active-company { font-size: 16px; color: #333; margin-bottom: 2px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+    #active-type { font-size: 11px; color: #999; margin-bottom: 6px; font-weight: 600; }
+    #live-timer { font-size: 36px; font-weight: 800; color: #ff9800; font-family: 'Courier New', monospace; line-height: 1; }
+
+    .manual-task { display: flex; gap: 5px; margin-bottom: 10px; }
+    #manual-input { flex-grow: 1; padding: 8px; border: 1px solid #ddd; border-radius: 5px; font-size: 13px; }
+    #add-task-btn { width: auto; margin: 0; padding: 0 15px; background: #ff9800; color: white; border-radius: 5px; cursor: pointer; font-weight: bold; border: none; }
+
+    #back-to-chat-btn { width: 100%; padding: 8px; background: #e3f2fd; color: #1e88e5; border: 1px solid #1e88e5; border-radius: 6px; margin-bottom: 10px; font-weight: bold; cursor: pointer; font-size: 11px; }
+
+    /* Блок кнопок управления */
+    .controls { display: flex; gap: 8px; margin-bottom: 10px; }
+    .controls button { margin-top: 0; flex: 1; }
+    #pause-btn { background: #f8f9fa; color: #333; border: 1px solid #ddd; }
+    #stop-btn { background: #fff5f5; color: #d32f2f; border: 1px solid #ffcdd2; }
+
+    #stats-container { max-height: 150px; overflow-y: auto; margin-bottom: 15px; border: 1px solid #e6e6e6; border-radius: 8px; }
+    .company-row { display: flex; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #f5f5f5; font-size: 12px; cursor: pointer; }
+    .company-row.active { background: #e8f5e9; border-left: 4px solid #4caf50; }
+    .company-time { font-family: monospace; font-weight: bold; color: #1e88e5; font-size: 13px; }
+
+    .total-row { padding: 10px; background: #f1f5f9; border-radius: 8px; display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 15px; font-size: 12px; }
+
+    button { width: 100%; padding: 12px; margin-top: 8px; cursor: pointer; border: none; border-radius: 6px; font-weight: bold; transition: all 0.2s; }
+    #download-report { background: #1e88e5; color: white; }
+    #reset-all { background: transparent; color: #999; border: 1px solid #ccc; font-size: 11px; margin-top: 15px; }
+    .empty-msg { text-align: center; color: #999; padding: 20px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="logo-container">
+    <span class="omni">OMNI</span><span class="timer">TIMER</span>
+  </div>
+
+  <div id="live-session">
+    <div id="active-company">ОЖИДАНИЕ...</div>
+    <div id="active-type"></div>
+    <div id="live-timer">0:00:00</div>
+  </div>
+
+  <div class="manual-task">
+    <input type="text" id="manual-input" placeholder="Новая задача...">
+    <button id="add-task-btn">▶</button>
+  </div>
+
+  <button id="back-to-chat-btn">🎯 Режим Авто (следовать за чатом)</button>
+  
+  <div class="controls">
+    <button id="pause-btn">⏸ Пауза</button>
+    <button id="stop-btn">🛑 Стоп</button>
+  </div>
+  
+  <div id="stats-container"></div>
+
+  <div class="total-row">
+    <span>ИТОГО ЗА СМЕНУ:</span>
+    <span id="total-time">0:00:00</span>
+  </div>
+  
+  <button id="download-report">📥 Скачать отчет (Excel)</button>
+  <button id="reset-all">🗑️ Обнулить статистику за день</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+
+
+

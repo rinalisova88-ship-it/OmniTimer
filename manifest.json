@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "⏳ OmniTimer",
+  "version": "1.3",
+  "description": "Таймер для Омнидеска с плавающим виджетом",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": [
+    "*://gcons.omnidesk.ru/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://gcons.omnidesk.ru/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
